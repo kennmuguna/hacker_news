@@ -2,8 +2,28 @@
 
 <h1><%= @post.link %></h1>
 
+
 <%= link_to "Edit", edit_post_path(@post) %> <br>
 <%= link_to "Delete", post_path(@post), 
                         :data => {:confirm => "Are you sure?",
                                     :method => "delete"} %>
 
+<%= if @posts.comments.any? %>
+<h3>Here are the added comments so far:</h3>
+
+<ul>
+<%= posts.comments.each do |comment| %>
+  <li>
+        <%= comments.author %>
+        <%= comments.opinion%>
+  </li>
+
+</ul>
+
+<% end %>
+
+<h3>There are no comments to display</h3>
+
+<% end %>
+
+<%= link_to "Add New Comment", new_post_comment_path(@post) %>
